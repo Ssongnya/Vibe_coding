@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 / Register</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        nav {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        #lang-toggle-btn {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" id="nav-home">홈</a>
+        <a href="login.html" id="nav-login">로그인</a>
+        <a href="register.html" id="nav-register">회원가입</a>
+    </nav>
+    <div class="container">
+        <h1 id="title">회원가입</h1>
+        <form action="#">
+            <input type="text" id="username" placeholder="사용자 이름" required>
+            <input type="password" id="password" placeholder="비밀번호" required>
+            <input type="password" id="confirm-password" placeholder="비밀번호 확인" required>
+            <button type="submit" id="register-btn">회원가입</button>
+        </form>
+        <button id="lang-toggle-btn" onclick="toggleLanguage()">English</button>
+    </div>
+
+    <script>
+        const translations = {
+            ko: {
+                title: "회원가입",
+                usernamePlaceholder: "사용자 이름",
+                passwordPlaceholder: "비밀번호",
+                confirmPasswordPlaceholder: "비밀번호 확인",
+                registerButton: "회원가입",
+                navHome: "홈",
+                navLogin: "로그인",
+                navRegister: "회원가입",
+                toggleButton: "English"
+            },
+            en: {
+                title: "Register",
+                usernamePlaceholder: "Username",
+                passwordPlaceholder: "Password",
+                confirmPasswordPlaceholder: "Confirm Password",
+                registerButton: "Register",
+                navHome: "Home",
+                navLogin: "Login",
+                navRegister: "Register",
+                toggleButton: "한국어"
+            }
+        };
+
+        let currentLang = 'ko';
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.getElementById('title').textContent = translations[lang].title;
+            document.getElementById('username').placeholder = translations[lang].usernamePlaceholder;
+            document.getElementById('password').placeholder = translations[lang].passwordPlaceholder;
+            document.getElementById('confirm-password').placeholder = translations[lang].confirmPasswordPlaceholder;
+            document.getElementById('register-btn').textContent = translations[lang].registerButton;
+            document.getElementById('nav-home').textContent = translations[lang].navHome;
+            document.getElementById('nav-login').textContent = translations[lang].navLogin;
+            document.getElementById('nav-register').textContent = translations[lang].navRegister;
+            document.getElementById('lang-toggle-btn').textContent = translations[lang].toggleButton;
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            setLanguage(currentLang);
+        }
+
+        // Set default language
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>챗봇 서비스에 오신 것을 환영합니다</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        p {
+            line-height: 1.6;
+        }
+        nav {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        nav a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        #lang-toggle-btn {
+            background: none;
+            border: none;
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" id="nav-home">홈</a>
+        <a href="login.html" id="nav-login">로그인</a>
+        <a href="register.html" id="nav-register">회원가입</a>
+    </nav>
+    <div class="container">
+        <h1 id="title">챗봇 서비스에 오신 것을 환영합니다!</h1>
+        <p id="intro-text">
+            이곳은 최첨단 AI 챗봇 서비스입니다. 당신의 일상적인 질문에 답변하고, 정보를 찾고, 창의적인 아이디어를 제공하는 등 다양한 도움을 드릴 수 있습니다. 시작하려면 로그인하거나 회원가입을 진행해주세요.
+        </p>
+        <button id="lang-toggle-btn" onclick="toggleLanguage()">English</button>
+    </div>
+
+    <script>
+        const translations = {
+            ko: {
+                title: "챗봇 서비스에 오신 것을 환영합니다!",
+                introText: "이곳은 최첨단 AI 챗봇 서비스입니다. 당신의 일상적인 질문에 답변하고, 정보를 찾고, 창의적인 아이디어를 제공하는 등 다양한 도움을 드릴 수 있습니다. 시작하려면 로그인하거나 회원가입을 진행해주세요.",
+                navHome: "홈",
+                navLogin: "로그인",
+                navRegister: "회원가입",
+                toggleButton: "English"
+            },
+            en: {
+                title: "Welcome to the Chatbot Service!",
+                introText: "This is a state-of-the-art AI chatbot service. We can help you with your daily questions, find information, provide creative ideas, and much more. Please log in or register to get started.",
+                navHome: "Home",
+                navLogin: "Login",
+                navRegister: "Register",
+                toggleButton: "한국어"
+            }
+        };
+
+        let currentLang = 'ko';
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.getElementById('title').textContent = translations[lang].title;
+            document.getElementById('intro-text').textContent = translations[lang].introText;
+            document.getElementById('nav-home').textContent = translations[lang].navHome;
+            document.getElementById('nav-login').textContent = translations[lang].navLogin;
+            document.getElementById('nav-register').textContent = translations[lang].navRegister;
+            document.getElementById('lang-toggle-btn').textContent = translations[lang].toggleButton;
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ko' ? 'en' : 'ko';
+            setLanguage(currentLang);
+        }
+
+        // Set default language
+        setLanguage(currentLang);
+    </script>
+</body>
+</html>
