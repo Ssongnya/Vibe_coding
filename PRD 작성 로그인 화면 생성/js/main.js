@@ -1,0 +1,1 @@
+// This file is for any global JavaScript functionality.
